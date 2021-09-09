@@ -5,8 +5,8 @@ const db = knex(config.development)
 
 module.exports = {
     findAll: async (table= 'notes') => await db(table),
-    findById: (table = 'notes', id) => db(table).where({ id: parseInt(id) }),
-    create:  (notes) => db('notes').insert(notes).then((ids) => ids[0]),
-    update: (noteId, notes) => db('notes').where({ id: parseInt(noteId) }).update(notes),
-    delete: (noteId) => db('notes').where({ id: parseInt(noteId) }).del()
+    findById: async(table = 'notes', id) => await db(table).where({ id: parseInt(id) }),
+    create:  async (notes) => await db('notes').insert(notes).then((ids) => ids[0]),
+    update: async (noteId, notes) => await db('notes').where({ id: parseInt(noteId) }).update(notes),
+    delete: async (noteId) => await db('notes').where({ id: parseInt(noteId) }).del()
 }

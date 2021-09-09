@@ -11,7 +11,10 @@
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "test": "yarn prettier-format && SILENCE_LOGGER=true jest --coverage --verbose --runInBand --detectOpenHandles --forceExit",
-    "db:migrate": "knex --knexfile knexfile.js migrate:latest"
+    "db:migrate": "knex --knexfile knexfile.js migrate:latest",
+    "db:seed:run": "knex --knexfile knexfile.js seed:run",
+    "db:migrate:up": "knex --knexfile knexfile.js migrate:up",
+    "db:migrate:down": "knex --knexfile knexfile.js migrate:down"
   },
   "repository": "git@github.com:bwoodlt/note-taker-nodejs.git",
   "devDependencies": {

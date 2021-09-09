@@ -2,12 +2,10 @@ const getRandom = require('../generateRandom')
 const INITIAL_NOTE_COUNT = 10;
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('notes').del()
+  return knex('notes_owner').del()
     .then(function () {
-      // Inserts seed entries
-      return knex('notes').insert(
-        Array.from({ length: INITIAL_NOTE_COUNT }, () => getRandom.generateNotes())
-      );
+      return knex('notes_owner').insert(
+        Array.from({ length: 2 }, () => getRandom.generateNotesOwner())
+      ).then((owner) => knex('notes').insert(Array.from({length: 10}, () => getRandom.generateNotes(owner))))
     });
 };

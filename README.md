@@ -9,7 +9,7 @@ A simple note-taking REST API using Knexjs and Faker to generate test data. Conn
 -- **PUT** - `UPDATE A NOTE` `/notes/id`\
 -- **DELETE** - `DELETE A NOTE` `/notes/id/`
 
-### GET Example Payload
+#### GET Example Payload
 
 ```javascript[
     {

@@ -7,10 +7,14 @@ const schemaValidation = {
       title: z.string().nonempty(),
       owner_id: z.number().nonnegative(),
       description: z.string().nonempty(),
-      creationDate: z.string().nonempty(),
-      modificationDate: z.string().nonempty()
+      creationDate: z.union([z.string().optional().nullable(), z.date().optional().nullable()]),
+      modificationDate: z.union([z.string().optional().nullable(), z.date().optional().nullable()])
     });
-    notesSchema.parse(data);
+    try {
+      notesSchema.parse(data);
+    } catch (error) {
+      throw error;
+    }
   },
 
   validateOwnerSchema: (owner: NotesOwner) => {
@@ -21,7 +25,11 @@ const schemaValidation = {
       createdAt: z.date()
     });
 
-    notesOwnerSchema.parse(owner);
+    try {
+      notesOwnerSchema.parse(owner);
+    } catch (error) {
+      throw error;
+    }
   }
 };
 
