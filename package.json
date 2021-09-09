@@ -11,6 +11,7 @@
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "test": "yarn prettier-format && SILENCE_LOGGER=true jest --coverage --verbose --runInBand --detectOpenHandles --forceExit",
+    "test:watch": "jest --watch",
     "db:migrate": "knex --knexfile knexfile.js migrate:latest",
     "db:seed:run": "knex --knexfile knexfile.js seed:run",
     "db:migrate:up": "knex --knexfile knexfile.js migrate:up",

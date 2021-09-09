@@ -1,8 +1,8 @@
-import { NotesOwner, NotesRequestPayload } from '../types';
+import { NotesOwner, NotesPayload } from '../types';
 import { z } from 'zod';
 
 const schemaValidation = {
-  validateNotesSchema: (data: NotesRequestPayload) => {
+  validateNotesSchema: (data: NotesPayload) => {
     const notesSchema = z.object({
       title: z.string().nonempty(),
       owner_id: z.number().nonnegative(),

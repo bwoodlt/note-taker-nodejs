@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express';
 import schemaValidation from '../utils/validation';
-// import knex from 'knex';
-import { NotesRequestPayload } from '../types';
+import { NotesPayload } from '../types';
 const db = require('../../knex/db');
 
 const notesRouter: Router = Router();
@@ -26,7 +25,7 @@ notesRouter
       return res.status(500).send(error);
     }
   })
-  .post(entityName, async (req: Request<NotesRequestPayload>, res: Response) => {
+  .post(entityName, async (req: Request<NotesPayload>, res: Response) => {
     const { body } = req;
 
     try {
@@ -81,8 +80,8 @@ notesRouter
       params: { id }
     } = req;
 
-    const notesRemoved = await db.delete(id);
-    return res.send({ notesRemoved: !!notesRemoved });
+    const noteRemoved = await db.delete(id);
+    return res.send({ noteRemoved: !!noteRemoved });
   });
 
 export default notesRouter;

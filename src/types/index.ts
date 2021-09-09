@@ -11,13 +11,6 @@ export interface NotesPayload {
   title: string;
   description: string;
   creationDate: Date;
+  owner_id: number;
   modificationDate: Date;
-}
-
-export interface NotesRequestPayload extends NotesPayload {
-  ownerId: number;
-}
-
-export interface NotesResponsePayload extends NotesPayload {
-  owner: NotesOwner;
 }
