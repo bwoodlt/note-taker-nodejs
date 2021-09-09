@@ -46,8 +46,16 @@ notesRouter
 
       schemaValidation.validateNotesSchema(notes);
 
-      const create = await db.create(notes);
-      return res.send({ create });
+      // we don't need to send createdDate & modificationDate
+      // considering they are the same at creation
+
+      Object.keys(notes).map((m) => ['createdDate', 'modificationDate'].includes(m) && delete notes[m]);
+
+      const record = await db.create(notes);
+      if (!record) {
+        return res.status(500).send('Unable to create notes. Try again later.');
+      }
+      return res.send({ created: true, record });
     } catch (error) {
       return res.status(400).send(error);
     }
@@ -58,9 +66,15 @@ notesRouter
       body
     } = req;
 
-    schemaValidation.validateNotesSchema(body);
-    const notes = await db.update(id, body);
-    return res.send(notes);
+    try {
+      const updated = await db.update(id, body);
+      if (!updated) {
+        return res.status(500).send(`Unable to update note with id ${id}`);
+      }
+      return res.send({ updated: !!updated });
+    } catch (error) {
+      return res.status(500).send(error);
+    }
   })
   .delete(`${entityName}/:id`, async (req: Request, res: Response) => {
     const {
@@ -68,7 +82,7 @@ notesRouter
     } = req;
 
     const notesRemoved = await db.delete(id);
-    return res.send(notesRemoved);
+    return res.send({ notesRemoved: !!notesRemoved });
   });
 
 export default notesRouter;
