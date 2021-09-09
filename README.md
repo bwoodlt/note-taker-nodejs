@@ -1,15 +1,15 @@
 ## What Is It?
 
-A simple note-taking REST API using Knexjs and Fakerjs to generate test data. Connected to Sqlite to push and pull data.
+A simple note-taking REST API using Knexjs and Faker to generate test data. Connected to Sqlite to push and pull.
 
 ## Services
 
--- **GET** - `Get all notes`\
--- **POST** - `Post new notes`\
--- **PUT** - `Update a note`\
--- **DELETE** - `Delete a note`
+-- **GET** - `GET ALL NOTES` `/notes`\
+-- **POST** - `POST NEW NOTE` `/notes`\
+-- **PUT** - `UPDATE A NOTE` `/notes/id`\
+-- **DELETE** - `DELETE A NOTE` `/notes/id/`
 
-## GET Example Payload
+### GET Example Payload
 
 ```javascript[
     {
