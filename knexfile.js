@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       filename: `${__dirname}/knex/notes.sqlite3`
     },
-    useNullAdDefault: true,
+    useNullAsDefault: true,
     migrations: {
         directory: `${__dirname}/knex/migrations`,
       },

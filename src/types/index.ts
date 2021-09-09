@@ -3,15 +3,15 @@
 export interface NotesOwner {
   firstName: string;
   lastName: string;
-  dob: string;
-  createdAt: string;
+  dob: Date;
+  createdAt: Date;
 }
 
 export interface NotesPayload {
   title: string;
   description: string;
-  creationDate: string;
-  modificationDate: string;
+  creationDate: Date;
+  modificationDate: Date;
 }
 
 export interface NotesRequestPayload extends NotesPayload {

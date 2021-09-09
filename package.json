@@ -15,9 +15,11 @@
   },
   "repository": "git@github.com:bwoodlt/note-taker-nodejs.git",
   "devDependencies": {
+    "@types/faker": "^5.5.8",
     "@types/jest": "^27.0.1",
     "@types/mocha": "^9.0.0",
     "@types/supertest": "^2.0.11",
+    "faker": "^5.5.3",
     "helmet": "^4.6.0",
     "jest": "^27.1.1",
     "nodemon": "^2.0.12",
